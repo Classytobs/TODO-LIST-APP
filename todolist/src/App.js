@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Task from "./Component/Task";
 
 
 
@@ -16,8 +17,8 @@ function App() {
           id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
           taskName: newTask,
         };
-      
-        setTodoList([...todoList, task])  
+        newTask === ''? alert ('Please enter a task') :
+        setTodoList([...todoList, task]) 
       }
 
       const deleteTask = (id) => {
@@ -40,16 +41,9 @@ function App() {
       </div>
       <div>
         {todoList.map((task)=>{
-          return(
-            <div className="flex flex-row justify-center">
-            <div className="flex flex-row items-center content-center justify-between w-1/3 p-2">
-            <h1>{task.taskName}</h1>
-            <button className="bg-red-700 hover:bg-red-800 
-               p-2 rounded-md ml-5"
-               onClick={()=>deleteTask(task.id)}>X</button>
-            </div>
-            </div>
-          )
+         return(
+          <Task taskName={task.taskName} id={task.id} deleteTask={deleteTask}/>
+         )
         })}
       </div>
     </div>
