@@ -16,9 +16,18 @@ function App() {
         const task ={
           id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
           taskName: newTask,
+          complete: false
         };
         newTask === ''? alert ('Please enter a task') :
         setTodoList([...todoList, task]) 
+      }
+
+      const completeTask = (id) => {
+       setTodoList(todoList.map((task)=> {
+          if(task.id === id){
+          return {...task, complete:true}}
+          else {return task;}
+        }))
       }
 
       const deleteTask = (id) => {
@@ -42,7 +51,8 @@ function App() {
       <div>
         {todoList.map((task)=>{
          return(
-          <Task taskName={task.taskName} id={task.id} deleteTask={deleteTask}/>
+          <Task taskName={task.taskName} id={task.id} deleteTask={deleteTask}
+          completeTask={completeTask} complete={task.complete}/>
          )
         })}
       </div>
