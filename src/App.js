@@ -49,7 +49,7 @@ function App() {
 
 
   return (
-    <div className="flex flex-col bg-slate-50 w-screen overflow-x-hidden">
+    <div className="flex flex-col bg-slate-50 w-screen overflow-hidden">
       <div className="text-4xl bg-slate-500 p-8 flex items-center justify-center content-center text-wrap font-serif">
         <h1>
             My Task List 
