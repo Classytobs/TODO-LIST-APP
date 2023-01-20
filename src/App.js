@@ -6,7 +6,14 @@ import Task from "./Component/Task";
 function App() {
 
       const [newTask, setNewTask]=useState("")
-      const [todoList, setTodoList]=useState([])
+      const [todoList, setTodoList]=useState(() =>{
+        const savedTodoList = localStorage.getItem("todoList");
+        if (savedTodoList) {
+          return JSON.parse(savedTodoList);
+        } else {
+          return [];
+        }
+      });
 
       const handleChange = (e) => {
         setNewTask(e.target.value)
